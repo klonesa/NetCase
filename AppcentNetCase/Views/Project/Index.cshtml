@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@using AppcentNetCase.Models.Entities
+@model List<Project>
+<h2>Projects</h2>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <input name="q" type="search" class="form-control page-search-form" placeholder="Projelerde ara" autocomplete="disabled">
+            </div>
+            <div class="col-md-4">
+                <a class="btn1 page-search-btn" href="/project/add/">
+                    <button type="button" class="btn btn-block btn-outline-primary">YENİ PROJE EKLE</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+</br>
+<div class="row">
+    <div class="col-md-12">
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="ProjList" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Proje</th>
+                                            <th>Proje Durumu</th>
+                                            <th>Başlangıç/Bitiş Tarihi</th>
+                                            <th>Açıklama</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var x in Model)
+                                        {
+                                            <tr>
+                                                <td>@x.ProjectTitle</td>
+                                                <td></td>
+                                                <td>@x.StartingDate/@x.FinishDate</td>
+                                                <td>@x.Text</td>
+                                                <td></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Proje</th>
+                                            <th>Proje Durumu</th>
+                                            <th>Başlangıç/Bitiş Tarihi</th>
+                                            <th>Açıklama</th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+</div>

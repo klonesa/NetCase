@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <br />
+        <div class="card card-outline card-info">
+            <div class="card-header">
+                <h3 class="card-title">
+                    Add Project
+                </h3>
+            </div>
+            <div class="line"></div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="inputName">Proje Başlığı:</label>
+                    <input id="Projtext" type="text" class="form-control" placeholder="Proje Başlığı giriniz">
+                </div>
+            </div>
+            <!-- Date -->
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Başlangıç Tarihi:</label>
+                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                        <input id="date1" type="text" class="form-control datetimepicker-input" data-target="#reservationdate" />
+                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Bitiş Tarihi:</label>
+                    <div class="input-group date" id="reservationdate2" data-target-input="nearest">
+                        <input id="date2" type="text" class="form-control datetimepicker-input" data-target="#reservationdate2" />
+                        <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+            <div class="card-body">
+                <label class="col-md-6">AÇIKLAMA:</label>
+                <textarea id="summernote" style="display: none;"></textarea>
+            </div>
+            <div class="card-footer">
+                <button id="AddTask" class="btn btn-primary" type="button">KAYDET</button>
+            </div>
+        </div>
+    </div>
+    <!-- /.col-->
+</div>
+<!-- ./row -->
+<script>
+
+    $(document).ready(function () {
+        $("#AddTask").click(function () {
+                var params = {
+                    TaskTitle: $('#Tasktext').val(),
+                    StartingDate: $('#date1').val(),
+                    FinishDate: $('#date2').val(),
+                    Text: $('#summernote').val(),
+                   /* ProjectID:*/
+                }
+                $.ajax({
+                    url: '/Project/AddProject',
+                    type: 'post',
+                    dataType: 'json',
+                    contentType: 'application/json; charset=UTF-8',
+                    data: JSON.stringify(params),
+                    success: function (data) {
+                        if (data) {
+
+                        }
+                        alert("Başarılı");
+                    },
+                });
+        });
+    });
+
+</script>
