@@ -57,30 +57,33 @@
 </div>
 <!-- ./row -->
 <script>
-
     $(document).ready(function () {
-        $("#AddTask").click(function () {
-                var params = {
-                    TaskTitle: $('#Tasktext').val(),
-                    StartingDate: $('#date1').val(),
-                    FinishDate: $('#date2').val(),
-                    Text: $('#summernote').val(),
-                   /* ProjectID:*/
-                }
-                $.ajax({
-                    url: '/Project/AddProject',
-                    type: 'post',
-                    dataType: 'json',
-                    contentType: 'application/json; charset=UTF-8',
-                    data: JSON.stringify(params),
-                    success: function (data) {
-                        if (data) {
 
-                        }
-                        alert("Başarılı");
-                    },
-                });
+        $('#AddTask').click(function () {
+            var params = {
+                TaskTitle: $('#Tasktext').val(),
+                StartingDate: $('#date1').val(),
+                FinishDate: $('#date2').val(),
+                Text: $('#summernote').val(),
+                /* ProjectID:*/
+            }
+            $.ajax({
+                url: "/Project/AddProject",
+                type: "POST",
+                dataType: 'json',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                data: JSON.stringify(params),
+                cache: false,
+                async: true,
+                success: function (data) {
+                    if (data) {
+
+                    }
+                    alert("Başarılı");
+
+                }
+            });
         });
-    });
+
 
 </script>
